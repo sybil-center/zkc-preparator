@@ -1,0 +1,22 @@
+{
+  "name": "zkc-preparator",
+  "version": "0.0.1",
+  "description": "ZKCredential preparator",
+  "main": "./dist/index.js",
+  "files": [
+    "./dist"
+  ],
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "(Apache-2.0 AND MIT)",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "ieee754": "^1.2.1",
+    "uint8arrays": "^4.0.6"
+  }
+}
