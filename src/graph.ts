@@ -63,11 +63,11 @@ const BASE_NODES: Record<string, GraphNode> = {
   },
   base32: {
     name: "base32",
-    isType: isStr("base32")
+    isType: isStr("base32upper")
   },
   base16: {
     name: "base16",
-    isType: isStr("base16")
+    isType: isStr("base16upper")
   },
   base64url: {
     name: "base64url",
@@ -254,8 +254,8 @@ const encAliases: Record<string, SupportedEncodings> = {
   "utf8": "utf8",
   "base64": "base64",
   "base64url": "base64url",
-  "base32": "base32",
-  "base16": "base16",
+  "base32": "base32upper",
+  "base16": "base16upper",
   "base58": "base58btc",
   "ascii": "ascii"
 };
@@ -330,7 +330,7 @@ function booleanToNumbers(): Record<string, GraphLink> {
         inputType: "boolean",
         outputType: name,
         name: `boolean-${name}`,
-        transform: (bool: boolean): number => bool ? 1 : 0
+        transform: (bool: boolean): bigint => bool ? 1n : 0n
       };
       return prev;
     }, {} as Record<string, any>);
