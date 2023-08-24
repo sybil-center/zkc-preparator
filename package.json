@@ -8,12 +8,15 @@
   ],
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx tsm ./node_modules/uvu/bin.js ./tests",
+    "build": "npx tsc"
   },
   "author": "",
   "license": "(Apache-2.0 AND MIT)",
   "devDependencies": {
-    "typescript": "^5.1.6"
+    "tsm": "^2.3.0",
+    "typescript": "^5.1.6",
+    "uvu": "^0.5.6"
   },
   "dependencies": {
     "ieee754": "^1.2.1",
