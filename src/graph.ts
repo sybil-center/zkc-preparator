@@ -457,8 +457,8 @@ export interface ITransformationGraph {
 
 export class TransformationGraph implements ITransformationGraph {
 
-  private readonly nodes = BASE_NODES;
-  private readonly links = BASE_LINKS;
+  private readonly nodes = { ...BASE_NODES };
+  private readonly links = { ...BASE_LINKS };
 
   extend(nodes: GraphNode[], links: GraphLink[]): void {
     nodes.forEach(node => {

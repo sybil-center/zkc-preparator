@@ -47,7 +47,7 @@ export interface IPreparator {
 export class Preparator implements IPreparator {
 
   private readonly graph = new TransformationGraph();
-  extendGraph = this.graph.extend;
+  extendGraph = this.graph.extend.bind(this.graph);
 
   prepare<
     TOut extends any[] = any [],
