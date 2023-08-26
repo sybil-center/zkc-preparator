@@ -39,7 +39,6 @@
   },
   "exclude": [
     "./dist",
-    "./tests"
   ],
 }
 

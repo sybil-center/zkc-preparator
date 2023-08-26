@@ -8,8 +8,8 @@
   ],
   "type": "module",
   "scripts": {
-    "test": "npx tsm ./node_modules/uvu/bin.js ./tests",
-    "build": "npx tsc"
+    "test": "npx tsm ./node_modules/uvu/bin.js test",
+    "build": "npx tsc -p tsconfig.build.json"
   },
   "author": "",
   "license": "(Apache-2.0 AND MIT)",
