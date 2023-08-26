@@ -1,8 +1,7 @@
 import * as u8a from "uint8arrays";
-import { SupportedEncodings } from "uint8arrays/src/util/bases.js";
 import ieee754 from "ieee754";
 
-function isStr(encoding: SupportedEncodings) {
+function isStr(encoding: u8a.SupportedEncodings) {
   return (value: any) => {
     const isstr = typeof value === "string";
     let result = true;
@@ -250,7 +249,7 @@ function intsToBytes(): Record<string, GraphLink> {
     }, {} as Record<string, GraphLink>);
 }
 
-const encAliases: Record<string, SupportedEncodings> = {
+const encAliases: Record<string, u8a.SupportedEncodings> = {
   "utf8": "utf8",
   "base64": "base64",
   "base64url": "base64url",
