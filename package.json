@@ -1,18 +1,31 @@
 {
   "name": "zkc-preparator",
   "version": "0.0.1",
+  "author": "",
+  "license": "(Apache-2.0 AND MIT)",
+  "keywords": [
+    "zk-credentials",
+    "zkc",
+    "Zero Knowladge Credentials",
+    "Credentials", "zkc preparator",
+    "zero knowledge credentials preparator"
+  ],
   "description": "ZKCredential preparator",
-  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sybil-center/zkc-preparator"
+  },
   "files": [
     "./dist"
   ],
   "type": "module",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "npx tsm ./node_modules/uvu/bin.js test",
     "build": "npx tsc -p tsconfig.build.json"
   },
-  "author": "",
-  "license": "(Apache-2.0 AND MIT)",
   "devDependencies": {
     "tsm": "^2.3.0",
     "typescript": "^5.1.6",
