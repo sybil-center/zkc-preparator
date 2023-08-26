@@ -1,5 +1,5 @@
 {
-  "name": "zkc-preparator",
+  "name": "@sybil-center/zkc-preparator",
   "version": "0.0.1",
   "author": "",
   "license": "(Apache-2.0 AND MIT)",
@@ -7,13 +7,14 @@
     "zk-credentials",
     "zkc",
     "Zero Knowladge Credentials",
-    "Credentials", "zkc preparator",
+    "Credentials",
+    "zkc preparator",
     "zero knowledge credentials preparator"
   ],
   "description": "ZKCredential preparator",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sybil-center/zkc-preparator"
+    "url": "git+https://github.com/sybil-center/zkc-preparator.git"
   },
   "files": [
     "./dist"
@@ -35,5 +36,12 @@
     "ieee754": "^1.2.1",
     "sort-keys": "^5.0.0",
     "uint8arrays": "^4.0.6"
+  },
+  "bugs": {
+    "url": "https://github.com/sybil-center/zkc-preparator/issues"
+  },
+  "homepage": "https://github.com/sybil-center/zkc-preparator#readme",
+  "directories": {
+    "test": "test"
   }
 }
