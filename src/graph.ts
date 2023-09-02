@@ -42,6 +42,7 @@ function isInt(num: number) {
 export type GraphNode = {
   name: string;
   isType: (value: any) => boolean
+  spread?: boolean;
 }
 
 export type GraphLink = {
@@ -139,12 +140,21 @@ function defaultLinks(): Record<string, GraphLink> {
   return Object
     .keys(BASE_NODES)
     .reduce((prev, current) => {
-      prev[current] = {
-        inputType: current,
-        outputType: current,
-        name: current,
-        transform: value => value
-      };
+      if (current.startsWith("int") || current.startsWith("uint")) {
+        prev[current] = {
+          inputType: current,
+          outputType: current,
+          name: current,
+          transform: value => BigInt(value)
+        };
+      } else {
+        prev[current] = {
+          inputType: current,
+          outputType: current,
+          name: current,
+          transform: value => value
+        };
+      }
       return prev;
     }, {} as Record<string, GraphLink>);
 }
@@ -456,8 +466,8 @@ export interface ITransformationGraph {
 
 export class TransformationGraph implements ITransformationGraph {
 
-  private readonly nodes = { ...BASE_NODES };
-  private readonly links = { ...BASE_LINKS };
+  readonly nodes = { ...BASE_NODES };
+  readonly links = { ...BASE_LINKS };
 
   extend(nodes: GraphNode[], links: GraphLink[]): void {
     nodes.forEach(node => {
@@ -497,4 +507,11 @@ export class TransformationGraph implements ITransformationGraph {
     });
     return result;
   }
+
+  toLastNode(links: string[]): GraphNode | undefined {
+    const lastLink = links[links.length - 1]!;
+    const lastType = this.links[lastLink]!.outputType;
+    return this.nodes[lastType];
+  }
+
 }
