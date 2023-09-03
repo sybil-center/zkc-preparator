@@ -57,13 +57,16 @@ export class Preparator implements IPreparator {
     const sortedCred = sort(credential);
     const sortedSchema = sort<TransCredSchema>(schema);
     const pathValueList = toPathValueList(sortedCred);
-    return pathValueList.reduce((prev, { value, path }) => {
-      const links = getByPath(sortedSchema, path);
+    return pathValueList.reduce((result, { value, path }) => {
+      const links = getByPath(sortedSchema, path) as string[];
       const transformed = this.graph.transform(value, links);
-      prev.push(transformed);
-      return prev;
+      const lastNode = this.graph.toLastNode(links);
+      if (lastNode?.spread) transformed.forEach((it: any) => result.push(it));
+      else result.push(transformed);
+      return result;
     }, ([] as any[]) as TOut);
   }
+
 }
 
 type PathValue = {
