@@ -1,6 +1,6 @@
 # ZK Credentials Preparator
 
-Zero Knowledge Credentials (ZKC) Preparator is a library designed to assist developers 
+Zero Knowledge Credentials (ZKC) Preparator is a library designed to assist developers
 in getting Zero Knowledge Credentials ready for use with Zero Knowledge Proof (ZKP)
 functions according to [ZKC protocol](https://www.craft.me/s/fP61xnwdZ9GZmg)
 (see `ZK Credential: Preparation` & `Transformation Graph`sections ).
@@ -37,42 +37,42 @@ const transSchema: TransCredSchema = {
   isd: ["uint64-bytes", "bytes-base32"],
   exd: ["uint64-bytes", "bytes-utf8"],
   sbj: {
-  id: {
-    t: ["uint32-bytes"],
-    k: ["utf8-bytes", "bytes-base16"]
-   },
-   alias: ["ascii-bytes", "bytes-uint128"],
-   eth: ["utf8-bytes", "bytes-uint256"]
+    id: {
+      t: ["uint32-bytes"],
+      k: ["utf8-bytes", "bytes-base16"]
+    },
+    alias: ["ascii-bytes", "bytes-uint128"],
+    eth: ["utf8-bytes", "bytes-uint256"]
   }
 };
 
 const preparator = new Preparator();
-  const [
-    isr_id_t, // boolean type
-    isr_id_k, // Uint8Array
-    sch,      // string as base16
-    isd,      // string as base32
-    exd,      // string as utf8
-    sbj_id_t, // Uint8Array
-    sbj_id_k, // string as base16
-    alias,    // bigint
-    eth       // bigint
-  ] = preparator.prepare(zkCredential, transSchema);
+const [
+  isr_id_t, // boolean type
+  isr_id_k, // Uint8Array
+  sch,      // string as base16
+  isd,      // string as base32
+  exd,      // string as utf8
+  sbj_id_t, // Uint8Array
+  sbj_id_k, // string as base16
+  alias,    // bigint
+  eth       // bigint
+] = preparator.prepare(zkCredential, transSchema);
 ```
 
 ### Extend transformation graph
 
 ```typescript
 const preparator = new Preparator();
-  preparator.extendGraph([{ // extend transformation nodes
-    name: "newNode",
-    isType: (value: any) => value === "hello ZKCredentials"
-  }], [{ // extend transformation links
-    inputType: "bytes",
-    outputType: "bytes",
-    name: "bytes.reverse",
-    transform: (bytes: Uint8Array) => bytes.reverse()
-  }]);
+preparator.extendGraph([{ // extend transformation nodes
+  name: "newNode",
+  isType: (value: any) => value === "hello ZKCredentials"
+}], [{ // extend transformation links
+  inputType: "bytes",
+  outputType: "bytes",
+  name: "bytes.reverse",
+  transform: (bytes: Uint8Array) => bytes.reverse()
+}]);
 ```
 
 ---
@@ -80,7 +80,7 @@ const preparator = new Preparator();
 ## Match between `Transformation Graph` types (nodes) and `JS` types
 
 | Name      | Description                                                                                     | JS Types                                                            |
-| --------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+|-----------|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
 | utf8      | UTF-8 encoded string, according to https://datatracker.ietf.org/doc/html/rfc3629                | string                                                              |
 | base64    | Base64 encoded string, according to https://datatracker.ietf.org/doc/html/rfc3629               | string                                                              |
 | base32    | Base32 encoded string, according to https://datatracker.ietf.org/doc/html/rfc3629               | string                                                              |
@@ -98,6 +98,7 @@ const preparator = new Preparator();
 | uint64    | Unsigned integer 64 bits size                                                                   | number or bigint as input type for link, only bigint as output type |
 | uint128   | Unsigned integer 128 bits size                                                                  | number or bigint as input type for link, only bigint as output type |
 | uint256   | Unsigned integer 256 bits size                                                                  | number or bigint as input type for link, only bigint as output type |
+| uint      | Unsigned integer withoout limits                                                                | number or bigint as input type for link, only bigint as output type |
 | float32   | Float according to IEEE 754                                                                     | number                                                              |
 | boolean   | Boolean                                                                                         | boolean                                                             |
 | bytes     | bytes array                                                                                     | Uint8Array                                                          |
