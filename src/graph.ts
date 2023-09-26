@@ -133,6 +133,15 @@ const BASE_NODES: Record<string, GraphNode> = {
   bytes: {
     name: "bytes",
     isType: (value: any) => value instanceof Uint8Array
+  },
+  uint: {
+    name: "uint",
+    isType: (value: any) => {
+      if (typeof value === "number") {
+        return value >= 0 && Number.isInteger(value);
+      }
+      return typeof value === "bigint" && value >= 0n;
+    }
   }
 };
 
@@ -180,6 +189,7 @@ function numToBytes(num: number | bigint): Uint8Array {
 }
 
 const uints = [
+  "uint",
   "uint16",
   "uint32",
   "uint64",
